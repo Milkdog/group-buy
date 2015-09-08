@@ -74,6 +74,13 @@ class Zinc
     protected $paymentMethod;
 
     /**
+     * Max Price for the entire order (including shipping) in cents. $24.99 would be $maxPrice = 2499
+     * A max price of 0 will allow the order to be submitted without actually completing the order.
+     * @var int
+     */
+    protected $maxPrice;
+
+    /**
      * The shipping methods that can be selected
      * @var array
      */
@@ -176,6 +183,11 @@ class Zinc
     	return false;
     }
 
+    public function setMaxPrice($maxPrice = 0.0) {
+    	// Convert from dollars to cents
+    	$this->maxPrice = $maxPrice*100;
+    }
+
     /**
      * Add webhooks for working with the Zinc API side
      * @param string $webhookName Name of the webhook. Possible options - order_place, order_failed, tracking_obtained
@@ -203,6 +215,34 @@ class Zinc
 
     	throw new Exception('ProductId or Quantity was not set');
     	return false;
+    }
+
+    public function generateOrder() {
+    	// Zinc Client Token
+    	$order->client_token = $this->clientToken;
+
+    	// Retailer information
+    	$order->retailer = $this->retailer;
+    	$order->retailer_credentials->email = $this->retailerUsername;
+    	$order->retailer_credentials->password = $this->retailerPassword;
+
+    	// Products for the order
+    	$order->products = $this->products;
+
+    	// Order meta information
+    	$order->max_price = $this->maxPrice;
+    	$order->is_gift = $this->isGift;
+    	$order->gift_message = $this->giftMessage;
+
+    	// Shipping information
+    	$order->shipping_method = $this->shippingMethod;
+    	$order->shipping_address = $this->shippingAddress;
+
+    	// Payment information
+    	$order->payment_method = $this->paymentMethod;
+    	$order->billing_address = $this->billingAddress;
+
+    	return $order;
     }
 
 }
