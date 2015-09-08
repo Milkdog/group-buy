@@ -2,6 +2,11 @@
 
 namespace Zinc;
 
+/**
+ * See Zinc API documentation for any help:
+ * https://zinc.io/docs/#full-api
+ */
+
 class Zinc
 {
 	/**
@@ -62,6 +67,8 @@ class Zinc
 
     /**
      * Contains the payment information for the order
+     * Contains the following fields:
+     * name_on_card, number, security_code, expiration_month, expiration_year, use_gift
      * @var object
      */
     protected $paymentMethod;
@@ -129,6 +136,10 @@ class Zinc
     	return false;
     }
 
+    /**
+     * Sets the method for shipping. See allowed options in class parameters
+     * @param object $shippingMethod See parameter declaration comments
+     */
     public function setShippingMethod($shippingMethod = null) {
     	// Makes sure the selected method is part of the selected items
     	if (in_array($shippingMethod, $this->allowedShippingMethods)) {
@@ -140,11 +151,20 @@ class Zinc
     	return false;
     }
 
+    /**
+     * Sets gift status and message
+     * @param boolean $isGift  If the order is a gift
+     * @param string  $message If it is a gift, the message attached to the order
+     */
     public function setGift($isGift = false, $message = '') {
     	$this->isGift = $isGift;
     	$this->giftMessage = $message;
     }
 
+    /**
+     * Sets the payment method.
+     * @param object $paymentObject See parameter declaration comments
+     */
     public function setPaymentMethod($paymentObject) {
     	if (!empty($paymentObject)) {
     		$this->paymentMethod = $paymentObject;
@@ -155,6 +175,15 @@ class Zinc
     	throw new Exception('A payment object was not set');
     	return false;
     }
+
+    /**
+     * Add webhooks for working with the Zinc API side
+     * @param string $webhookName Name of the webhook. Possible options - order_place, order_failed, tracking_obtained
+     * @param string $url         [description]
+     */
+   	public function setWebhook($webhookName, $url) {
+   		//TODO: Add webhook support
+   	}
 
     /**
      * Adds a product to the items to be ordered.
