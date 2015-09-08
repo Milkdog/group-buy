@@ -54,6 +54,24 @@ class Zinc
      */
     protected $giftMessage = '';
 
+    /**
+     * The selected shipping method. Order will fail if `free` is selected, but is not available for all items.
+     * @var string
+     */
+    protected $shippingMethod;
+
+    /**
+     * Contains the payment information for the order
+     * @var object
+     */
+    protected $paymentMethod;
+
+    /**
+     * The shipping methods that can be selected
+     * @var array
+     */
+    protected $allowedShippingMethods = array('cheapest', 'fastest', 'free');
+
 
 
     function __construct($clientToken = null) {
@@ -76,6 +94,8 @@ class Zinc
 
     		return true;
     	}
+
+    	throw new Exception('Retailer information was not set');
     	return false;
     }
 
@@ -90,6 +110,7 @@ class Zinc
     		return true;
     	}
 
+    	    	throw new Exception('A billing address object was not set');
     	return false;
     }
 
@@ -104,6 +125,34 @@ class Zinc
     		return true;
     	}
 
+    	throw new Exception('A shipping address object was not set');
+    	return false;
+    }
+
+    public function setShippingMethod($shippingMethod = null) {
+    	// Makes sure the selected method is part of the selected items
+    	if (in_array($shippingMethod, $this->allowedShippingMethods)) {
+    		$this->shippingMethod = $shippingMethod;
+    		return true;
+    	}
+
+    	throw new Exception('Select a valid shipping method');
+    	return false;
+    }
+
+    public function setGift($isGift = false, $message = '') {
+    	$this->isGift = $isGift;
+    	$this->giftMessage = $message;
+    }
+
+    public function setPaymentMethod($paymentObject) {
+    	if (!empty($paymentObject)) {
+    		$this->paymentMethod = $paymentObject;
+
+    		return true;
+    	}
+
+    	throw new Exception('A payment object was not set');
     	return false;
     }
 
@@ -122,12 +171,9 @@ class Zinc
     		$this->products[$productId] = $quantity;
     		return true;
     	}
-    	return false;
-    }
 
-    public function setGift($isGift = false, $message = '') {
-    	$this->isGift = $isGift;
-    	$this->giftMessage = $message;
+    	throw new Exception('ProductId or Quantity was not set');
+    	return false;
     }
 
 }
