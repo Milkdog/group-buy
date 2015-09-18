@@ -210,4 +210,3 @@ Type::build('datetime')->useLocaleParser();
 // Read Amazon config. Try to load custom first, if not, load default
 Configure::load('groupbuy-default');
 Configure::load('groupbuy-custom');
-

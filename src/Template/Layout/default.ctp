@@ -55,11 +55,14 @@
         </nav>
         <div class="row">
             <div class="main container">
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                <div id="status"></div>
+
                 <?= $this->fetch('content') ?>
             </div>
         </div>
         <!-- Bootstrap JS -->
-        <?= $this->Html->script(['//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '../bootstrap/js/bootstrap.min.js']) ?>
+        <?= $this->Html->script(['//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '../bootstrap/js/bootstrap.min.js', 'facebook-login.js']) ?>
         <?= $this->fetch('script') ?>
     </body>
 </html>

@@ -33,11 +33,13 @@ class SearchController extends AppController {
 			$this->log($e->getMessage());
 		}
 
-
 		$data = [
-		    'color' => $url,
-		    'results' => $results,
-		    'base_price' => 23.95
+		    'asin' => $asin,
+		    'item' => [
+		    	'title' => $results->Items->Item->ItemAttributes->Title,
+		    	'image' => $results->Items->Item->MediumImage->URL,
+		    	'price' => $results->Items->Item->ItemAttributes->ListPrice->FormattedPrice
+		    ]
 		];
 
 		$this->set($data);

@@ -3,7 +3,11 @@
 $this->layout = 'default';
 
 ?>
-<p>You have selected <?= h($color) ?> icing for the cake.</p>
+<p>ASIN: <?= h($asin) ?></p>
 
-<p><?= h($results) ?></p>
+<?php
+echo $this->element('itemview-large', [
+	'item' => $item
+]);
+?>
 
