@@ -55,8 +55,9 @@
         </nav>
         <div class="row">
             <div class="main container">
-                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-                <div id="status"></div>
+                <div class="facebook-login hidden">
+                    <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();"></fb:login-button>
+                </div>
 
                 <?= $this->fetch('content') ?>
             </div>

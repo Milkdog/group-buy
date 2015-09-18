@@ -1,30 +1,26 @@
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
-  // The response object is returned with a status field that lets the
-  // app know the current login status of the person.
-  // Full docs on the response object can be found in the documentation
-  // for FB.getLoginStatus().
-  if (response.status === 'connected') {
-	  // Logged into your app and Facebook.
-	  // TODO: Create user item with this information
-	  $.ajax({
-		  type: 'PUT',
-		  url: '/users/' + response.authResponse.userID + '.json',
-		  data: {
-			  facebook_user_id: response.authResponse.userID,
-			  facebook_access_token: response.authResponse.accessToken
-		  },
-		  success: function(data) {
-			  console.log(data);
-		  },
-		  dataType: 'json'
-	  });
-  }
+	if (response.status === 'connected') {
+		// Remove login button
+		$('.facebook-login').hide();
+
+		// Create user item with this information
+		$.ajax({
+			type: 'PUT',
+			url: '/users/' + response.authResponse.userID + '.json',
+			data: {
+				facebook_user_id: response.authResponse.userID,
+				facebook_access_token: response.authResponse.accessToken
+		    },
+		    dataType: 'json'
+		});
+	} else {
+		$('.facebook-login').removeClass('hidden');
+	}
 }
 
 // This function is called when someone finishes with the Login
-// Button.  See the onlogin handler attached to it in the sample
-// code below.
+// Button.
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
 	statusChangeCallback(response);
@@ -53,7 +49,7 @@ FB.init({
 // These three cases are handled in the callback function.
 
 FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
+	statusChangeCallback(response);
 });
 
 };

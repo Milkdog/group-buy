@@ -30,6 +30,11 @@ class UsersController extends AppController {
 		} else {
 			$message = 'Error';
 		}
+
+		// Add user data to the session
+		$session = $this->request->session();
+		$session->write('user', $user);
+
 		$this->set([
 			'message' => $message,
 			'user' => $user,
@@ -60,6 +65,11 @@ class UsersController extends AppController {
 				$message = 'Error';
 			}
 		}
+
+		// Add user data to the session
+		$session = $this->request->session();
+		$session->write('user', $user);
+
 		$this->set([
 			'message' => $message,
 			'user' => $user,
