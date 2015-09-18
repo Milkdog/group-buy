@@ -38,7 +38,8 @@ class SearchController extends AppController {
 		    'item' => [
 		    	'title' => $results->Items->Item->ItemAttributes->Title,
 		    	'image' => $results->Items->Item->MediumImage->URL,
-		    	'price' => $results->Items->Item->ItemAttributes->ListPrice->FormattedPrice
+		    	'price' => $results->Items->Item->ItemAttributes->ListPrice->FormattedPrice,
+		    	'features' => $results->Items->Item->ItemAttributes->Feature
 		    ]
 		];
 

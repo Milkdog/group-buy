@@ -173,7 +173,7 @@ class AmazonProductModel {
             return $response->xml;
         }
 
-        throw new Exception('Unable to get product data from Amazon.');
+        throw new Exception('Unable to get product data from Amazon. Code: ' . $response->code);
         return false;
 
     }
