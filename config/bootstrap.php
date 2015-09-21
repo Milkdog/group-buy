@@ -210,3 +210,6 @@ Type::build('datetime')->useLocaleParser();
 // Read Amazon config. Try to load custom first, if not, load default
 Configure::load('groupbuy-default');
 Configure::load('groupbuy-custom');
+
+// Hybrid Auth to allow for Facebook logins
+Plugin::load('ADmad/HybridAuth', ['bootstrap' => true, 'routes' => true]);

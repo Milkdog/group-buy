@@ -38,5 +38,17 @@ class AppController extends Controller
     {
         parent::initialize();
         $this->loadComponent('Flash');
+
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form',
+                'ADmad/HybridAuth.HybridAuth'
+            ],
+            // redirect here if the user not authorized
+            'loginAction' => [
+                'controller' => 'User',
+                'action' => 'login',
+            ],
+        ]);
     }
 }

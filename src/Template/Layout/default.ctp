@@ -55,15 +55,20 @@
         </nav>
         <div class="row">
             <div class="main container">
-                <div class="facebook-login hidden">
-                    <fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();"></fb:login-button>
+                <div class="facebook-login">
+                    <?php
+                        echo $this->Html->link(
+                            'Login with Facebook',
+                            ['controller' => 'User', 'action' => 'login', '?' => ['provider' => 'Facebook']]
+                        );
+                    ?>
                 </div>
 
                 <?= $this->fetch('content') ?>
             </div>
         </div>
         <!-- Bootstrap JS -->
-        <?= $this->Html->script(['//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '../bootstrap/js/bootstrap.min.js', 'facebook-login.js']) ?>
+        <?= $this->Html->script(['//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '../bootstrap/js/bootstrap.min.js']) ?>
         <?= $this->fetch('script') ?>
     </body>
 </html>

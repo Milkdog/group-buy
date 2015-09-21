@@ -1,0 +1,24 @@
+2015-09-20 18:06:17 Notice: Notice (8): Undefined property: PDOException::$getTrace in [/Users/Chris/workspace/group-buy/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/MysqlAdapter.php, line 113]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 138
+Phinx\Db\Adapter\MysqlAdapter::connect() - ROOT/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/MysqlAdapter.php, line 113
+Phinx\Db\Adapter\PdoAdapter::getConnection() - ROOT/vendor/robmorgan/phinx/src/Phinx/Db/Adapter/PdoAdapter.php, line 197
+Migrations\CakeAdapter::__construct() - ROOT/vendor/cakephp/migrations/src/CakeAdapter.php, line 54
+Migrations\Command\Migrate::bootstrap() - ROOT/vendor/cakephp/migrations/src/ConfigurationTrait.php, line 196
+Phinx\Console\Command\Migrate::execute() - ROOT/vendor/robmorgan/phinx/src/Phinx/Console/Command/Migrate.php, line 72
+Migrations\Command\Migrate::parentExecute() - ROOT/vendor/cakephp/migrations/src/ConfigurationTrait.php, line 142
+Migrations\Command\Migrate::execute() - ROOT/vendor/cakephp/migrations/src/Command/Migrate.php, line 58
+Symfony\Component\Console\Command\Command::run() - ROOT/vendor/symfony/console/Command/Command.php, line 259
+Symfony\Component\Console\Application::doRunCommand() - ROOT/vendor/symfony/console/Application.php, line 878
+Symfony\Component\Console\Application::doRun() - ROOT/vendor/symfony/console/Application.php, line 195
+Symfony\Component\Console\Application::run() - ROOT/vendor/symfony/console/Application.php, line 126
+Migrations\Shell\MigrationsShell::main() - ROOT/vendor/cakephp/migrations/src/Shell/MigrationsShell.php, line 82
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 452
+Migrations\Shell\MigrationsShell::runCommand() - ROOT/vendor/cakephp/migrations/src/Shell/MigrationsShell.php, line 95
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 212
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 179
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 126
+[main] - ROOT/bin/cake.php, line 33
+
+
+

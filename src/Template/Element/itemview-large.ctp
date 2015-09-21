@@ -2,6 +2,7 @@
 	<h2><?= $item['title'] ?></h2>
 	<img src="<?= $item['image'] ?>">
 	<div class="price"><?= $item['price'] ?></div>
+	<a class="btn btn-default" href="/product/add/<?= $asin ?>">Start Group Buy</a>
 	<div class="features">
 		<ul>
 			<?php

@@ -7,6 +7,7 @@ $this->layout = 'default';
 
 <?php
 echo $this->element('itemview-large', [
+	'asin' => $asin,
 	'item' => $item
 ]);
 ?>

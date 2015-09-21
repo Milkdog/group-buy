@@ -23,4 +23,5 @@ return array(
     'Aura\\Intl\\_Config\\' => array($vendorDir . '/aura/intl/config'),
     'App\\Test\\' => array($baseDir . '/tests'),
     'App\\' => array($baseDir . '/src'),
+    'ADmad\\HybridAuth\\' => array($vendorDir . '/admad/cakephp-hybridauth/src'),
 );

@@ -1,0 +1,28 @@
+2015-09-20 18:26:21 Error: [Cake\Core\Exception\MissingPluginException] Plugin ADmad/cakephp-HybridAuth could not be found.
+Exception Attributes: array (
+  'plugin' => 'ADmad/cakephp-HybridAuth',
+)
+Stack Trace:
+#0 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/Shell.php(422): Cake\Core\Plugin::load('ADmad/cakephp-H...')
+#1 /Users/Chris/workspace/group-buy/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(95): Cake\Console\Shell->runCommand(Array, true, Array)
+#2 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(212): Migrations\Shell\MigrationsShell->runCommand(Array, true, Array)
+#3 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(179): Cake\Console\ShellDispatcher->_dispatch(Array)
+#4 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(126): Cake\Console\ShellDispatcher->dispatch(Array)
+#5 /Users/Chris/workspace/group-buy/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#6 {main}
+
+
+2015-09-20 18:26:56 Error: [Cake\Core\Exception\MissingPluginException] Plugin admad/cakephp-hybridAuth could not be found.
+Exception Attributes: array (
+  'plugin' => 'admad/cakephp-hybridAuth',
+)
+Stack Trace:
+#0 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/Shell.php(422): Cake\Core\Plugin::load('admad/cakephp-h...')
+#1 /Users/Chris/workspace/group-buy/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(95): Cake\Console\Shell->runCommand(Array, true, Array)
+#2 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(212): Migrations\Shell\MigrationsShell->runCommand(Array, true, Array)
+#3 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(179): Cake\Console\ShellDispatcher->_dispatch(Array)
+#4 /Users/Chris/workspace/group-buy/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(126): Cake\Console\ShellDispatcher->dispatch(Array)
+#5 /Users/Chris/workspace/group-buy/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#6 {main}
+
+
