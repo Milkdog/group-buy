@@ -9,12 +9,13 @@ class ProductController extends AppController {
         $this->loadComponent('Amazon');
 	}
 
-	public function add($id) {
+	public function add($id, $productName) {
 		$user = $this->Auth->user();
 
 		// Create the group for this product
 		$groupData = [
-			'product_id' => $id
+			'product_id' => $id,
+			'product_name' => $productName
 		];
 
 		$groupsTable = TableRegistry::get('Groups');
@@ -38,7 +39,7 @@ class ProductController extends AppController {
 		    $groupUserId = $groupUser->id;
 		}
 
-		$this->setAction('view', $groupId);
+		return $this->redirect(['action' => 'view', $groupId]);
 	}
 
 	public function view($id) {
@@ -54,13 +55,14 @@ class ProductController extends AppController {
 	private function _getGroupMembers($groupId) {
 		$groupUsersTable = TableRegistry::get('GroupUsers');
 		// $groupUsers = $groupUsersTable->get($groupId)->contain(['Users', 'Groups']);
-		$groupUsers = $groupUsersTable->find('all')->where(['group_id' => $groupId])->contain(['SocialProfiles'])->toArray();
+		$groupUsers = $groupUsersTable->find('all')->where(['group_id' => $groupId])->order(['owner' => 'DESC'])->contain(['SocialProfiles'])->toArray();
 
 		// Get only pertinent information
 		$retUsers = [];
 		foreach($groupUsers as $user) {
 			$retUsers[$user['user_id']] = [
 				'user_id' => $user['user_id'],
+				'owner' => $user['owner'],
 				'name' => $user['social_profile']['display_name'],
 				'photo_url' => $user['social_profile']['photo_url'],
 				'profile_url' => $user['social_profile']['profile_url']

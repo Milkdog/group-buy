@@ -2,7 +2,27 @@
 	<h2><?= $item['title'] ?></h2>
 	<img src="<?= $item['image'] ?>">
 	<div class="price"><?= $item['price'] ?></div>
-	<a class="btn btn-default" href="/product/add/<?= $asin ?>">Start Group Buy</a>
+	<?php
+		if (isset($groupId) && is_numeric($groupId)) {
+			echo $this->Html->link(
+				'Join Group Buy',
+				'/product/join/' . $groupId,
+				['class' => 'btn btn-default']
+			);
+			echo $this->Html->link(
+				'Contribute',
+				'/group/contribute/' . $groupId,
+				['class' => 'btn btn-default']
+			);
+		} else {
+			echo $this->Html->link(
+				'Start Group Buy',
+				'/product/add/' . $asin . '/' . urlencode($item['title']),
+				['class' => 'btn btn-default']
+			);
+		}
+	?>
+
 	<div class="features">
 		<ul>
 			<?php

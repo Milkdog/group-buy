@@ -63,6 +63,7 @@ class AmazonComponent extends Component
 		}
 
 		$data = [
+			'groupId' => $id,
 			'asin' => $groupData->product_id,
 			'item' => $itemData
 		];

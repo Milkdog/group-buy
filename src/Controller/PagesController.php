@@ -17,6 +17,7 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\ORM\TableRegistry;
 
 /**
  * Static content controller
@@ -51,6 +52,10 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
+
+        $data['groups'] = $this->_getCurrentUsersGroups();
+
+        $this->set($data);
         $this->set(compact('page', 'subpage'));
 
         try {
@@ -61,5 +66,15 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+    private function _getCurrentUsersGroups() {
+        $user = $this->Auth->user();
+
+        $groupUsersTable = TableRegistry::get('GroupUsers');
+        // $groupUsers = $groupUsersTable->get($groupId)->contain(['Users', 'Groups']);
+        $groupUsers = $groupUsersTable->find('all')->where(['user_id' => $user['id']])->order('owner', 'DESC')->contain(['Groups'])->toArray();
+
+        return $groupUsers;
     }
 }
