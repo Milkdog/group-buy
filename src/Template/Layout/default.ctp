@@ -68,7 +68,7 @@
             </div>
         </div>
         <!-- Bootstrap JS -->
-        <?= $this->Html->script(['//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '../bootstrap/js/bootstrap.min.js']) ?>
+        <?= $this->Html->script(['//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', '../bootstrap/js/bootstrap.min.js', 'https://checkout.stripe.com/checkout.js', 'contribute.js']) ?>
         <?= $this->fetch('script') ?>
     </body>
 </html>

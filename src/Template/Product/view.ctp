@@ -4,7 +4,8 @@
 	echo $this->element('itemview-large', [
 		'asin' => $asin,
 		'group_id' => $groupId,
-		'item' => $item
+		'item' => $item,
+		'user' => $user
 	]);
 	?>
 

@@ -9,11 +9,10 @@
 				'/product/join/' . $groupId,
 				['class' => 'btn btn-default']
 			);
-			echo $this->Html->link(
-				'Contribute',
-				'/group/contribute/' . $groupId,
-				['class' => 'btn btn-default']
-			);
+			echo $this->element('stripe-pay', [
+				'user' => $user,
+				'groupId' => $groupId
+			]);
 		} else {
 			echo $this->Html->link(
 				'Start Group Buy',
